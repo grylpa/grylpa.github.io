@@ -4,7 +4,7 @@
 	--muted: #444;
 	--faint: #777;
 	--link: #0055cc;
-	--col-half: 380px;
+	--col-half: 410px;
 }
 
 html[data-theme="dark"] {
@@ -56,10 +56,10 @@ a { color: var(--link); }
 	right: 0;
 	z-index: 10;
 	display: flex;
-	align-items: center;
-	flex-wrap: wrap;
-	gap: 0.5rem 1.25rem;
+	align-items: flex-start;
+	gap: 1rem;
 	padding: 0.7rem 1rem;
+	padding-bottom: calc(0.7rem + env(safe-area-inset-bottom, 0px));
 	background: var(--bg);
 	border-top: 1px solid var(--faint);
 }
@@ -77,9 +77,8 @@ a { color: var(--link); }
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.4rem 1.25rem;
+	flex: 1;
+	min-width: 0;
 }
 
 .quicklinks li {
@@ -116,6 +115,7 @@ a { color: var(--link); }
 		display: block;
 		list-style: disc;
 		padding-left: 1.2em;
+		flex: 0 1 auto;
 	}
 
 	.quicklinks li {

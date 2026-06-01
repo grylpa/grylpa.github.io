@@ -17,8 +17,8 @@
 
 		function relabel() {
 			var cur = document.documentElement.getAttribute('data-theme');
-			btn.textContent = cur === 'dark' ? 'light' : 'dark';
-			btn.setAttribute('aria-label', 'switch to ' + btn.textContent + ' theme');
+			btn.textContent = cur === 'dark' ? '☀' : '☾';
+			btn.setAttribute('aria-label', 'switch to ' + (cur === 'dark' ? 'light' : 'dark') + ' theme');
 		}
 
 		relabel();
@@ -27,7 +27,13 @@
 			apply(cur === 'dark' ? 'light' : 'dark');
 			relabel();
 		});
+
 		var heading = document.querySelector('.page-heading');
-		(heading || document.body).appendChild(btn);
+		if (heading) {
+			var nav = heading.querySelector('.quicklinks');
+			heading.insertBefore(btn, nav || null);
+		} else {
+			document.body.appendChild(btn);
+		}
 	});
 }());

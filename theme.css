@@ -23,7 +23,6 @@ body {
 	position: relative;
 	margin-top: 0;
 	padding-top: 0;
-	padding-bottom: 4rem; /* mobile: clear the sticky bottom nav */
 	background: var(--bg);
 	color: var(--fg);
 	transition: background-color 0.2s ease, color 0.2s ease;
@@ -33,37 +32,48 @@ p { color: var(--muted); }
 a { color: var(--link); }
 .soon { color: var(--faint); font-style: italic; }
 
-/* ── frozen heading: same on all devices ── */
+/*
+ * .page-heading is the single sticky block.
+ * Row 1: h1 (flex:1) + toggle
+ * Row 2: .quicklinks strip (flex-basis:100% forces it to its own row)
+ * On desktop .quicklinks becomes position:fixed so it leaves the flex flow,
+ * and only row 1 (h1 + toggle) remains in the sticky block.
+ */
 
 .page-heading {
 	position: sticky;
 	top: 0;
 	z-index: 15;
 	display: flex;
-	flex-direction: row;
+	flex-wrap: wrap;
 	align-items: center;
-	justify-content: space-between;
-	padding: 0.4rem 0;
+	padding-top: 0.4rem;
 	background: var(--bg);
 	transition: background-color 0.2s ease;
 }
 
 .page-heading h1 {
+	flex: 1;
+	min-width: 0;
 	margin: 0;
 }
 
 #theme-toggle {
 	position: static;
 	flex-shrink: 0;
-	font-family: system-ui, sans-serif;
-	font-size: 0.8rem;
-	padding: 0.3em 0.75em;
+	width: 2rem;
+	height: 2rem;
+	padding: 0;
 	border: 1px solid var(--faint);
-	border-radius: 999px;
+	border-radius: 50%;
 	background: transparent;
 	color: var(--fg);
 	cursor: pointer;
-	line-height: 1;
+	font-size: 1rem;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-family: system-ui, sans-serif;
 }
 
 #theme-toggle:hover {
@@ -71,39 +81,32 @@ a { color: var(--link); }
 	color: var(--link);
 }
 
-/* ── links nav ── */
-
-/* back button: hidden on mobile */
+/* back arrow: just ← on mobile */
 .ql-back {
-	display: none;
+	font-size: 0.9rem;
 	color: var(--faint);
 	text-decoration: none;
+	flex-shrink: 0;
 }
 
 .ql-back:hover { color: var(--link); }
 
-/* Mobile default: sticky bottom bar.
-   position:sticky is immune to Firefox's dynamic URL bar (unlike position:fixed)
-   because it uses the layout viewport, not the visual viewport. */
+/* Mobile: quicklinks is the second sticky row, directly below the heading */
 .quicklinks {
-	position: sticky;
-	bottom: 0;
-	z-index: 10;
-	height: 3rem;
+	flex-basis: 100%;
+	height: 2.5rem;
 	display: flex;
 	align-items: center;
-	padding: 0 1.25rem;
-	gap: 1.5rem;
-	background: var(--bg);
+	gap: 1.25rem;
+	padding: 0;
 	border-top: 1px solid var(--faint);
-	transition: background-color 0.2s ease;
 	overflow-x: auto;
 }
 
 .quicklinks ul {
 	display: flex;
 	align-items: center;
-	gap: 1.5rem;
+	gap: 1.25rem;
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -118,15 +121,13 @@ a { color: var(--link); }
 	margin: 0;
 }
 
-/* ── desktop: left margin panel ── */
-
+/* Desktop: left margin panel */
 @media (min-width: 1240px) {
-	body {
-		padding-bottom: 0;
+	.ql-back::after {
+		content: " grylpa";
 	}
 
 	.ql-back {
-		display: block;
 		font-size: 1rem;
 		margin-bottom: 1.5rem;
 	}
@@ -139,6 +140,7 @@ a { color: var(--link); }
 		left: auto;
 		width: 160px;
 		height: auto;
+		flex-basis: auto;
 		flex-direction: column;
 		align-items: flex-start;
 		justify-content: center;

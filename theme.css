@@ -51,7 +51,7 @@ a { color: var(--link); }
 
 .quicklinks {
 	position: fixed;
-	bottom: 0;
+	top: 0;
 	left: 0;
 	right: 0;
 	z-index: 10;
@@ -59,9 +59,9 @@ a { color: var(--link); }
 	align-items: flex-start;
 	gap: 1rem;
 	padding: 0.7rem 1rem;
-	padding-bottom: calc(0.7rem + env(safe-area-inset-bottom, 0px));
+	padding-top: calc(0.7rem + env(safe-area-inset-top, 0px));
 	background: var(--bg);
-	border-top: 1px solid var(--faint);
+	border-bottom: 1px solid var(--faint);
 }
 
 .quicklinks h2 {
@@ -82,11 +82,16 @@ a { color: var(--link); }
 }
 
 .quicklinks li {
-	margin: 0;
+	margin: 0.35rem 0;
 }
 
 @media (max-width: 1239.98px) {
-	body { padding-bottom: 110px; }
+	body { padding-top: 110px; }
+	#theme-toggle {
+		position: fixed;
+		top: 124px;
+		right: 16px;
+	}
 }
 
 @media (min-width: 1240px) {

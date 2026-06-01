@@ -27,6 +27,7 @@
 			apply(cur === 'dark' ? 'light' : 'dark');
 			relabel();
 		});
-		document.body.appendChild(btn);
+		var heading = document.querySelector('.page-heading');
+		(heading || document.body).appendChild(btn);
 	});
 }());

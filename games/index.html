@@ -16,6 +16,11 @@
 			color: #222;
 		}
 
+		/* Extra right padding on mobile to clear the thumbnail strip */
+		@media (max-width: 1239px) {
+			body { padding-right: calc(56px + 12px); }
+		}
+
 		.back {
 			font-size: 0.95rem;
 			color: #777;
@@ -79,11 +84,11 @@
 		<div class="page-heading">
 			<h1>nomizo</h1>
 			<nav class="quicklinks">
-				<a class="ql-back" href="/">←</a>
+				<a class="ql-back" href="/" aria-label="back to home"></a>
 				<ul>
 					<li><a href="https://github.com/grylpa/grylpagames">source code</a></li>
 					<li><a href="https://github.com/grylpa/grylpagames/releases/latest">downloads</a></li>
-					<li><a href="/games/nomizo/">play in browser</a></li>
+					<li><a class="ql-play" href="/games/nomizo/">play</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -170,5 +175,49 @@
 		</p>
 	</footer>
 
+	<aside class="thumb-col thumb-left" aria-hidden="true">
+		<img src="/thumbnails/breathe.png" alt="">
+		<img src="/thumbnails/bucketmadness.png" alt="">
+		<img src="/thumbnails/crack.png" alt="">
+		<img src="/thumbnails/ddooo.png" alt="">
+		<img src="/thumbnails/delemfp.png" alt="">
+		<img src="/thumbnails/deliverem.png" alt="">
+		<img src="/thumbnails/didi.png" alt="">
+		<img src="/thumbnails/friends.png" alt="">
+		<img src="/thumbnails/gorilla.png" alt="">
+		<img src="/thumbnails/guidem.png" alt="">
+		<img src="/thumbnails/lightsout.png" alt="">
+		<img src="/thumbnails/matchws.png" alt="">
+		<img src="/thumbnails/mmm.png" alt="">
+	</aside>
+
+	<aside class="thumb-col thumb-right" aria-hidden="true">
+		<img src="/thumbnails/movingcards.png" alt="">
+		<img src="/thumbnails/ooo.png" alt="">
+		<img src="/thumbnails/parkem.png" alt="">
+		<img src="/thumbnails/pneumo.png" alt="">
+		<img src="/thumbnails/polkadots.png" alt="">
+		<img src="/thumbnails/pop.png" alt="">
+		<img src="/thumbnails/storm.png" alt="">
+		<img src="/thumbnails/taxi.png" alt="">
+		<img src="/thumbnails/template_for_card_games.png" alt="">
+		<img src="/thumbnails/udbr.png" alt="">
+		<img src="/thumbnails/weris.png" alt="">
+		<img src="/thumbnails/whack.png" alt="">
+		<img src="/thumbnails/wolves.png" alt="">
+		<img src="/thumbnails/breathe.png" alt="">
+		<img src="/thumbnails/bucketmadness.png" alt="">
+		<img src="/thumbnails/crack.png" alt="">
+		<img src="/thumbnails/ddooo.png" alt="">
+		<img src="/thumbnails/delemfp.png" alt="">
+		<img src="/thumbnails/deliverem.png" alt="">
+		<img src="/thumbnails/didi.png" alt="">
+		<img src="/thumbnails/friends.png" alt="">
+		<img src="/thumbnails/gorilla.png" alt="">
+		<img src="/thumbnails/guidem.png" alt="">
+		<img src="/thumbnails/lightsout.png" alt="">
+		<img src="/thumbnails/matchws.png" alt="">
+		<img src="/thumbnails/mmm.png" alt="">
+	</aside>
 </body>
 </html>

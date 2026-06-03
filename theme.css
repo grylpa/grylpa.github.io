@@ -36,8 +36,7 @@ a { color: var(--link); }
  * .page-heading is the single sticky block.
  * Row 1: h1 (flex:1) + toggle
  * Row 2: .quicklinks strip (flex-basis:100% forces it to its own row)
- * On desktop .quicklinks becomes position:fixed so it leaves the flex flow,
- * and only row 1 (h1 + toggle) remains in the sticky block.
+ * Same layout on mobile and desktop — quicklinks is always a horizontal strip.
  */
 
 .page-heading {
@@ -82,15 +81,43 @@ a { color: var(--link); }
 	color: var(--link);
 }
 
-/* back arrow: just ← on mobile */
+/* back arrow — CSS chevron, no Unicode glyph metrics */
 .ql-back {
-	font-size: 0.9rem;
-	color: var(--faint);
-	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	align-self: center;
 	flex-shrink: 0;
+	text-decoration: none;
+	color: var(--link);
+	width: 1.5rem;
+	height: 1.5rem;
 }
 
-.ql-back:hover { color: var(--link); }
+.ql-back::before {
+	content: '';
+	display: block;
+	width: 0.42rem;
+	height: 0.42rem;
+	border-left: 2px solid currentColor;
+	border-bottom: 2px solid currentColor;
+	transform: rotate(45deg) translate(15%, 0);
+}
+
+.ql-back:hover { opacity: 0.7; }
+
+/* "play" button in quicklinks — reverse of link colors */
+.ql-play {
+	display: inline-block;
+	padding: 0.1rem 0.55rem;
+	background: var(--link);
+	color: var(--bg) !important;
+	border-radius: 3px;
+	text-decoration: none;
+	font-size: 0.9rem;
+	line-height: 1.5;
+}
+.ql-play:hover { opacity: 0.8; }
 
 /* Mobile: quicklinks is the second sticky row, directly below the heading */
 .quicklinks {
@@ -98,7 +125,7 @@ a { color: var(--link); }
 	height: 2.5rem;
 	display: flex;
 	align-items: center;
-	gap: 1.25rem;
+	gap: 0.5rem;
 	padding: 0;
 	border-top: 1px solid var(--faint);
 	overflow-x: auto;
@@ -122,48 +149,77 @@ a { color: var(--link); }
 	margin: 0;
 }
 
-/* Desktop: left margin panel */
+/* ─── Thumbnail side strips ─────────────────────────────────────────────── */
+
+/* Base: all thumbnail strips */
+.thumb-col {
+	position: fixed;
+	z-index: 10;
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	overflow: hidden;
+	top: 0;
+	bottom: 0;
+}
+
+.thumb-col img {
+	display: block;
+	width: 100%;
+	flex-shrink: 0;
+	object-fit: cover;
+	aspect-ratio: 1;
+	border-radius: 2px;
+	cursor: default;
+	pointer-events: none;
+}
+
+/* Left/top/bottom strips hidden on mobile */
+.thumb-left, .thumb-top, .thumb-bottom { display: none; }
+/* top strip never shown */
+.thumb-top { display: none !important; }
+
+/* Right strip on mobile */
+.thumb-right {
+	right: 4px;
+	width: 56px;
+}
+
+/* ─── Desktop: thumbnail frame + heading below top strip ─────────────────── */
 @media (min-width: 1240px) {
-	.ql-back::after {
-		content: " grylpa";
+	:root {
+		--thumb-size: calc((100vh - 12 * 3px) / 13);
 	}
 
-	.ql-back {
-		font-size: 1rem;
-		margin-bottom: 1.5rem;
+	body {
+		margin-top: 0;
+		padding-top: 0;
 	}
 
-	.quicklinks {
-		position: fixed;
+	.page-heading { top: 0; }
+
+	/* Side strips: 8px gap from the content column */
+	.thumb-left {
+		display: flex;
+		right: calc(50% + var(--col-half) + 8px);
+		left: auto;
 		top: 0;
 		bottom: 0;
-		right: calc(50% + var(--col-half) + 40px);
-		left: auto;
-		width: 160px;
-		height: auto;
-		flex-basis: auto;
-		flex-direction: column;
-		align-items: flex-start;
-		justify-content: center;
-		padding: 2rem 1.5rem 2rem 0;
-		gap: 0;
-		background: transparent;
-		border-top: none;
-		border-right: 1px solid var(--faint);
-		overflow: visible;
+		width: var(--thumb-size);
+	}
+	.thumb-right {
+		left: calc(50% + var(--col-half) + 8px);
+		right: auto;
+		top: 0;
+		bottom: 0;
+		width: var(--thumb-size);
+	}
+	.thumb-left img, .thumb-right img {
+		flex: 0 0 var(--thumb-size);
+		width: var(--thumb-size);
+		height: var(--thumb-size);
+		aspect-ratio: unset;
+		flex-shrink: 0;
 	}
 
-	.quicklinks ul {
-		display: block;
-		list-style: disc;
-		padding-left: 1.2em;
-		flex: 0;
-		overflow: visible;
-	}
-
-	.quicklinks li {
-		font-size: 1rem;
-		margin: 0.6em 0;
-		white-space: normal;
-	}
 }

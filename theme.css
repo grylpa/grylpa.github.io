@@ -179,10 +179,22 @@ a { color: var(--link); }
 /* top strip never shown */
 .thumb-top { display: none !important; }
 
-/* Right strip on mobile */
+/* Right strip on mobile: its own scroll container, independent of the page */
 .thumb-right {
 	right: 4px;
 	width: 56px;
+	overflow-y: auto;
+	overscroll-behavior: contain; /* don't chain scroll to the page */
+	-webkit-overflow-scrolling: touch;
+	scrollbar-width: none;
+}
+.thumb-right::-webkit-scrollbar { display: none; }
+
+/* Inner wrapper: plain flex column (images are duplicated for the cyclic loop) */
+.thumb-right .thumb-scroll {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
 }
 
 /* ─── Desktop: thumbnail frame + heading below top strip ─────────────────── */
@@ -213,7 +225,9 @@ a { color: var(--link); }
 		top: 0;
 		bottom: 0;
 		width: var(--thumb-size);
+		overflow: hidden; /* static frame on desktop, no scrolling */
 	}
+
 	.thumb-left img, .thumb-right img {
 		flex: 0 0 var(--thumb-size);
 		width: var(--thumb-size);

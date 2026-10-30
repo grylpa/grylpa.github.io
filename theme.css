@@ -1,0 +1,239 @@
+html {
+	scrollbar-gutter: stable;
+}
+
+:root {
+	--bg: #f8f8f8;
+	--fg: #222;
+	--muted: #444;
+	--faint: #777;
+	--link: #0055cc;
+	--col-half: 410px;
+}
+
+html[data-theme="dark"] {
+	--bg: #161616;
+	--fg: #e8e8e8;
+	--muted: #b6b6b6;
+	--faint: #8a8a8a;
+	--link: #6cb0ff;
+}
+
+body {
+	position: relative;
+	margin-top: 0;
+	padding-top: 0;
+	background: var(--bg);
+	color: var(--fg);
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+p { color: var(--muted); }
+a { color: var(--link); }
+.soon { color: var(--faint); font-style: italic; }
+
+/*
+ * .page-heading is the single sticky block.
+ * Row 1: h1 (flex:1) + toggle
+ * Row 2: .quicklinks strip (flex-basis:100% forces it to its own row)
+ * Same layout on mobile and desktop — quicklinks is always a horizontal strip.
+ */
+
+.page-heading {
+	position: sticky;
+	top: 0;
+	z-index: 15;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	padding-top: 0.4rem;
+	background: var(--bg);
+	transition: background-color 0.2s ease;
+}
+
+.page-heading h1 {
+	flex: 1;
+	min-width: 0;
+	margin: 0;
+	font-size: clamp(2rem, 8vw, 3rem);
+}
+
+#theme-toggle {
+	position: static;
+	flex-shrink: 0;
+	width: 2rem;
+	height: 2rem;
+	padding: 0;
+	border: 1px solid var(--faint);
+	border-radius: 50%;
+	background: transparent;
+	color: var(--fg);
+	cursor: pointer;
+	font-size: 1rem;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-family: system-ui, sans-serif;
+}
+
+#theme-toggle:hover {
+	border-color: var(--link);
+	color: var(--link);
+}
+
+/* back arrow — CSS chevron, no Unicode glyph metrics */
+.ql-back {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	align-self: center;
+	flex-shrink: 0;
+	text-decoration: none;
+	color: var(--link);
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.ql-back::before {
+	content: '';
+	display: block;
+	width: 0.42rem;
+	height: 0.42rem;
+	border-left: 2px solid currentColor;
+	border-bottom: 2px solid currentColor;
+	transform: rotate(45deg) translate(15%, 0);
+}
+
+.ql-back:hover { opacity: 0.7; }
+
+/* "play" button in quicklinks — reverse of link colors */
+.ql-play {
+	display: inline-block;
+	padding: 0.1rem 0.55rem;
+	background: var(--link);
+	color: var(--bg) !important;
+	border-radius: 3px;
+	text-decoration: none;
+	font-size: 0.9rem;
+	line-height: 1.5;
+}
+.ql-play:hover { opacity: 0.8; }
+
+/* Mobile: quicklinks is the second sticky row, directly below the heading */
+.quicklinks {
+	flex-basis: 100%;
+	height: 2.5rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0;
+	border-top: 1px solid var(--faint);
+	overflow-x: auto;
+}
+
+.quicklinks ul {
+	display: flex;
+	align-items: center;
+	gap: 1.25rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	overflow-x: auto;
+	flex: 1;
+	min-width: 0;
+}
+
+.quicklinks li {
+	font-size: 0.9rem;
+	white-space: nowrap;
+	margin: 0;
+}
+
+/* ─── Thumbnail side strips ─────────────────────────────────────────────── */
+
+/* Base: all thumbnail strips */
+.thumb-col {
+	position: fixed;
+	z-index: 10;
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	overflow: hidden;
+	top: 0;
+	bottom: 0;
+}
+
+.thumb-col img {
+	display: block;
+	width: 100%;
+	flex-shrink: 0;
+	object-fit: cover;
+	aspect-ratio: 1;
+	border-radius: 2px;
+	cursor: default;
+	pointer-events: none;
+}
+
+/* Left/top/bottom strips hidden on mobile */
+.thumb-left, .thumb-top, .thumb-bottom { display: none; }
+/* top strip never shown */
+.thumb-top { display: none !important; }
+
+/* Right strip on mobile: its own scroll container, independent of the page */
+.thumb-right {
+	right: 4px;
+	width: 56px;
+	overflow-y: auto;
+	overscroll-behavior: contain; /* don't chain scroll to the page */
+	-webkit-overflow-scrolling: touch;
+	scrollbar-width: none;
+}
+.thumb-right::-webkit-scrollbar { display: none; }
+
+/* Inner wrapper: plain flex column (images are duplicated for the cyclic loop) */
+.thumb-right .thumb-scroll {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+}
+
+/* ─── Desktop: thumbnail frame + heading below top strip ─────────────────── */
+@media (min-width: 1240px) {
+	:root {
+		--thumb-size: calc((100vh - 12 * 3px) / 13);
+	}
+
+	body {
+		margin-top: 0;
+		padding-top: 0;
+	}
+
+	.page-heading { top: 0; }
+
+	/* Side strips: 8px gap from the content column */
+	.thumb-left {
+		display: flex;
+		right: calc(50% + var(--col-half) + 8px);
+		left: auto;
+		top: 0;
+		bottom: 0;
+		width: var(--thumb-size);
+	}
+	.thumb-right {
+		left: calc(50% + var(--col-half) + 8px);
+		right: auto;
+		top: 0;
+		bottom: 0;
+		width: var(--thumb-size);
+		overflow: hidden; /* static frame on desktop, no scrolling */
+	}
+
+	.thumb-left img, .thumb-right img {
+		flex: 0 0 var(--thumb-size);
+		width: var(--thumb-size);
+		height: var(--thumb-size);
+		aspect-ratio: unset;
+		flex-shrink: 0;
+	}
+
+}

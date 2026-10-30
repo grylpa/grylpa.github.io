@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>katalaveno — grylpa</title>
+
+	<style>
+		body {
+			font-family: system-ui, sans-serif;
+			max-width: 820px;
+			margin: 60px auto;
+			padding: 0 1rem;
+			line-height: 1.6;
+			background: #f8f8f8;
+			color: #222;
+		}
+
+		.back {
+			font-size: 0.95rem;
+			color: #777;
+		}
+
+		h1 {
+			font-size: 3rem;
+			margin-bottom: 0.2em;
+		}
+
+		h2 {
+			margin-top: 2.5em;
+			font-size: 1.2rem;
+			text-transform: lowercase;
+			letter-spacing: 0.04em;
+		}
+
+		p {
+			font-size: 1.05rem;
+			color: #444;
+		}
+
+		ul {
+			padding-left: 1.2em;
+		}
+
+		li {
+			margin: 0.7em 0;
+		}
+
+		a {
+			color: #0055cc;
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		.soon {
+			color: #999;
+			font-style: italic;
+		}
+		
+		footer {
+			margin-top: 3rem;
+			padding-top: 1rem;
+			border-top: 1px solid #ddd;
+			font-size: 0.95rem;
+		}
+	</style>
+
+	<link rel="stylesheet" href="/theme.css">
+	<script src="/theme.js"></script>
+	<script data-goatcounter="https://grylpa.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+	<section>
+		<div class="page-heading">
+			<h1>katalaveno</h1>
+			<nav class="quicklinks">
+				<a class="ql-back" href="/" aria-label="back to home"></a>
+				<ul>
+					<li><a href="https://github.com/grylpa/grylpalang/releases/latest">downloads</a></li>
+					<li><a href="https://github.com/grylpa/grylpalang">source code</a></li>
+				</ul>
+			</nav>
+		</div>
+
+		<p>a mobile language-learning companion, built with Flutter.</p>
+
+		<p>
+			Katalaveno is a personal experiment in using software to support the challenge of
+			learning a new and difficult language. It is meant to complement traditional learning,
+			not replace it.
+		</p>
+
+		<p>
+			The idea is to keep useful language material returning during the day, especially
+			through listening, repetition, sentence generation, and phone notifications.
+		</p>
+
+		<p>Current modes include:</p>
+
+		<ol>
+			<li>
+				<strong>Sentence bank</strong> — enter sentences in a known language, use AI to 
+				translate them into the target language, and listen to both using text-to-speech.
+			</li>
+			<li>
+				<strong>Listening mode</strong> — load local text, or connect to an available free
+				text source, then listen to it in small chunks together with AI translation.
+			</li>
+			<li>
+				<strong>Difficult words</strong> — enter words that are hard to remember, generate
+				sentences using those words and their conjugated forms, and receive them as daily
+				phone notifications with different exercise styles, including missing-word and
+				cloze-style prompts.
+			</li>
+		</ol>
+
+		<p>
+			The app uses Gemini for translation and provides a link for getting an API key. Free
+			translation quota can be limited, but translated material is cached locally, so once
+			something has been generated it can be reused without repeatedly calling the
+			translation service.
+		</p>
+		
+		<p>
+			Katalaveno was built from the start with the help of coding agents, mainly Codex and
+			Claude Code. This was part of the experiment: not only building the app, but also seeing
+			which parts of a real project AI could handle well, and which parts still needed careful
+			human direction.
+		</p>
+
+		<p>
+			The experience was mixed but useful. The agents were especially helpful with connecting
+			to external services such as translation, text-to-speech generation, downloads, and text
+			sources. On the other hand, some of the code they produced was more complicated and less
+			coherent than I would normally want.
+		</p>
+
+		<p>
+			So, overall, the app is also a record of learning how to work with AI as a development
+			partner: useful, sometimes impressive, sometimes messy, and definitely a positive experience.
+		</p>
+	</section>
+
+	<footer>
+		<p>
+			Contact: <a href="mailto:info@grylpa.com">info@grylpa.com</a>
+		</p>
+	</footer>
+
+</body>
+</html>

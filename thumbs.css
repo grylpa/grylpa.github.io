@@ -79,9 +79,9 @@
 /* the nomizo page's game tiles and katalaveno's phones turn the same way */
 .phone img { transform: perspective(900px) rotate3d(var(--ax, 0), var(--ay, 1), 0, var(--ang)); animation: tile-turn var(--dur, 9s) ease-in-out var(--delay, 0s) infinite alternate; }
 .shelf img {
-	transform: perspective(420px) rotate3d(var(--ax, 0), var(--ay, 1), 0, var(--ang));
+	transform: translate(var(--dx, 0), var(--dy, 0)) rotate(var(--rz, 0deg)) scale(var(--s, 1)) perspective(420px) rotate3d(var(--ax, 0), var(--ay, 1), 0, var(--ang));
 	animation: tile-turn var(--dur, 9s) ease-in-out var(--delay, 0s) infinite alternate;
 	transition: box-shadow .18s ease !important;
 }
 /* pointing at a game tile: it stops where it is and grows a little, as in the main page's frame */
-.shelf a:hover img { animation-play-state: paused; transform: perspective(420px) rotate3d(var(--ax, 0), var(--ay, 1), 0, var(--ang)) scale(1.1) !important; }
+.shelf a:hover img { animation-play-state: paused; transform: translate(var(--dx, 0), var(--dy, 0)) rotate(var(--rz, 0deg)) scale(calc(var(--s, 1) * 1.1)) perspective(420px) rotate3d(var(--ax, 0), var(--ay, 1), 0, var(--ang)) !important; }

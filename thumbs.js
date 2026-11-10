@@ -41,6 +41,13 @@
 
 	document.addEventListener("DOMContentLoaded", function () {
 		document.querySelectorAll(".shelf img, .phone img").forEach(pace);
+		// the nomizo page's tiles sit a little off their places, tilts and sizes, like the frame
+		document.querySelectorAll(".shelf img").forEach(function (img) {
+			img.style.setProperty("--dx", rnd(-6, 6).toFixed(1) + "%");
+			img.style.setProperty("--dy", rnd(-4, 4).toFixed(1) + "%");
+			img.style.setProperty("--rz", rnd(-5, 5).toFixed(1) + "deg");
+			img.style.setProperty("--s", rnd(0.88, 1.04).toFixed(3));
+		});
 		var imgs = document.querySelectorAll(".thumb-col img");
 		if (!imgs.length) return;
 		imgs.forEach(function (img) {

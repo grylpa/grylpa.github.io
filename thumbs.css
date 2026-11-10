@@ -86,9 +86,9 @@
 /* the nomizo page's game tiles and katalaveno's phones turn the same way */
 .phone img { transform: perspective(900px) rotate3d(var(--ax, 0), var(--ay, 1), 0, calc(var(--ang) * (1 - var(--face)))); animation: tile-turn var(--dur, 9s) ease-in-out var(--delay, 0s) infinite alternate; }
 .shelf img {
-	transform: translate(var(--dx, 0), var(--dy, 0)) rotate(calc(var(--rz, 0deg) * (1 - var(--face)))) scale(var(--s, 1)) perspective(420px) rotate3d(var(--ax, 0), var(--ay, 1), 0, calc(var(--ang) * (1 - var(--face))));
+	transform: translate(var(--dx, 0), var(--dy, 0)) rotate(calc(var(--rz, 0deg) * (1 - var(--face)))) scale(calc(var(--s, 1) * (1 + 0.1 * var(--face)))) perspective(420px) rotate3d(var(--ax, 0), var(--ay, 1), 0, calc(var(--ang) * (1 - var(--face))));
 	animation: tile-turn var(--dur, 9s) ease-in-out var(--delay, 0s) infinite alternate;
 	transition: box-shadow .18s ease, --face .3s ease !important;
 }
 /* pointing at a game tile: it turns to face you, flat and upright, and grows a little, as in the main page's frame */
-.shelf a:hover img { animation-play-state: paused; --face: 1; transform: translate(var(--dx, 0), var(--dy, 0)) rotate(calc(var(--rz, 0deg) * (1 - var(--face)))) scale(calc(var(--s, 1) * 1.1)) perspective(420px) rotate3d(var(--ax, 0), var(--ay, 1), 0, calc(var(--ang) * (1 - var(--face)))) !important; }
+.shelf a:hover img { animation-play-state: paused; --face: 1; }

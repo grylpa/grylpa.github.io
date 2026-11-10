@@ -83,4 +83,5 @@
 	animation: tile-turn var(--dur, 9s) ease-in-out var(--delay, 0s) infinite alternate;
 	transition: box-shadow .18s ease !important;
 }
-.shelf a:hover img { animation-play-state: paused; transform: perspective(420px) rotate3d(var(--ax, 0), var(--ay, 1), 0, var(--ang)) translateY(-3px) !important; }
+/* pointing at a game tile: it stops where it is and grows a little, as in the main page's frame */
+.shelf a:hover img { animation-play-state: paused; transform: perspective(420px) rotate3d(var(--ax, 0), var(--ay, 1), 0, var(--ang)) scale(1.1) !important; }

@@ -8,7 +8,7 @@
 	<style>
 		body {
 			font-family: system-ui, sans-serif;
-			max-width: 820px;
+			max-width: 880px;
 			margin: 60px auto;
 			padding: 0 1rem;
 			line-height: 1.6;
@@ -66,10 +66,24 @@
 			border-top: 1px solid #ddd;
 			font-size: 0.95rem;
 		}
+		/* the three modes, each under a picture of it on a phone */
+		.modes { list-style: none; padding: 0; margin: 1.4em 0 2em; display: grid;
+			grid-template-columns: repeat(3, 1fr); gap: 26px; counter-reset: mode; }
+		.modes li { margin: 0; }
+		.modes p { font-size: 0.95rem; margin: 1em 0 0; }
+		.phone { width: 78%; margin: 0 auto; }
+		.phone img { display: block; width: 100%; height: auto; border-radius: 18px;
+			border: 5px solid #2b2b2b; box-shadow: 0 2px 4px rgba(0,0,0,.25), 0 14px 30px rgba(0,0,0,.28); }
+		@media (max-width: 640px) {
+			.modes { grid-template-columns: 1fr; gap: 34px; }
+			.phone { width: 58%; }
+		}
 	</style>
 
 	<link rel="stylesheet" href="/theme.css">
-	<script src="/theme.js"></script>
+	<link rel="stylesheet" href="/thumbs.css?v=3">
+	<script src="/thumbs.js?v=3"></script>
+	<script src="/theme.js?v=3"></script>
 	<script data-goatcounter="https://grylpa.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 </head>
@@ -77,7 +91,7 @@
 <body>
 	<section>
 		<div class="page-heading">
-			<h1>katalaveno</h1>
+			<h1><img class="title-icon" src="/icons/katalaveno.png" alt="">katalaveno</h1>
 			<nav class="quicklinks">
 				<a class="ql-back" href="/" aria-label="back to home"></a>
 				<ul>
@@ -102,20 +116,23 @@
 
 		<p>Current modes include:</p>
 
-		<ol>
+		<ol class="modes">
 			<li>
-				<strong>Sentence bank</strong> — enter sentences in a known language, use AI to 
-				translate them into the target language, and listen to both using text-to-speech.
+				<div class="phone"><img src="shots/sentences.jpg" alt="The sentence bank: an English sentence above its Greek translation, with play controls" loading="lazy"></div>
+				<p><strong>Sentence bank</strong> — enter sentences in a known language, use AI to
+				translate them into the target language, and listen to both using text-to-speech.</p>
 			</li>
 			<li>
-				<strong>Listening mode</strong> — load local text, or connect to an available free
-				text source, then listen to it in small chunks together with AI translation.
+				<div class="phone"><img src="shots/books.jpg" alt="The listening mode: choosing a text, with filters and Project Gutenberg as a source" loading="lazy"></div>
+				<p><strong>Listening mode</strong> — load local text, or connect to an available free
+				text source, then listen to it in small chunks together with AI translation.</p>
 			</li>
 			<li>
-				<strong>Difficult words</strong> — enter words that are hard to remember, generate
+				<div class="phone"><img src="shots/prompts.jpg" alt="Difficult words: Greek sentences with missing words and English hints" loading="lazy"></div>
+				<p><strong>Difficult words</strong> — enter words that are hard to remember, generate
 				sentences using those words and their conjugated forms, and receive them as daily
 				phone notifications with different exercise styles, including missing-word and
-				cloze-style prompts.
+				cloze-style prompts.</p>
 			</li>
 		</ol>
 

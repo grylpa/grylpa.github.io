@@ -198,9 +198,10 @@ a { color: var(--link); }
 }
 
 /* ─── Desktop: thumbnail frame + heading below top strip ─────────────────── */
-@media (min-width: 1240px) {
+@media (min-width: 880px) {
 	:root {
-		--thumb-size: calc((100vh - 12 * 3px) / 13);
+		/* 13 to a screen height, but never wider than the room beside the text */
+		--thumb-size: min(calc((100vh - 12 * 3px) / 13), calc(50vw - var(--col-half) - 8px - 6px));
 	}
 
 	body {
@@ -236,4 +237,50 @@ a { color: var(--link); }
 		flex-shrink: 0;
 	}
 
+}
+
+/* ─── The site's look (2026-11-10): the app's gold in dark, its navy in light ─────────── */
+:root {
+	--link: #2a4c86;
+	--accent: #1f2a44;
+	--btn-bg: #f9ca5a;
+	--btn-fg: #191e2d;
+}
+html[data-theme="dark"] {
+	--link: #f9ca5a;
+	--accent: #f9ca5a;
+	--btn-bg: #f9ca5a;
+	--btn-fg: #161616;
+}
+.page-heading h1 {
+	font-family: system-ui, sans-serif;
+	font-weight: 800;
+	font-size: clamp(2.4rem, 9vw, 3.4rem);
+	letter-spacing: -0.01em;
+	line-height: 1.15;
+	color: var(--accent);
+}
+.ql-play {
+	padding: 0.1rem 0.85rem;
+	border-radius: 999px;
+	background: var(--btn-bg);
+	color: var(--btn-fg) !important;
+	font-weight: 600;
+}
+.ql-back { color: var(--link); }
+footer {
+	margin-top: 3.2rem;
+	padding-top: 1.2rem;
+	text-align: center;
+	border-top: 1px solid transparent;
+	border-image: linear-gradient(90deg, transparent, var(--faint), transparent) 1;
+}
+footer p { font-size: 0.9rem; color: var(--faint); }
+.page-heading h1 .title-icon {
+	height: 0.82em;
+	width: auto;
+	border-radius: 0.2em;
+	margin-right: 0.28em;
+	vertical-align: -0.08em;
+	box-shadow: 0 2px 8px rgba(0,0,0,.25);
 }

@@ -1,5 +1,8 @@
 (function () {
 	var KEY = 'grylpa-theme';
+	// drawn, not the ☀ / ☾ characters: the font's moon is a thin sliver
+	var SUN = '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>';
+	var MOON = '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg>';
 	var saved = null;
 	try { saved = localStorage.getItem(KEY); } catch (e) {}
 	var theme = saved === 'light' || saved === 'dark' ? saved : 'dark';
@@ -17,7 +20,7 @@
 
 		function relabel() {
 			var cur = document.documentElement.getAttribute('data-theme');
-			btn.textContent = cur === 'dark' ? '☀' : '☾';
+			btn.innerHTML = cur === 'dark' ? SUN : MOON;
 			btn.setAttribute('aria-label', 'switch to ' + (cur === 'dark' ? 'light' : 'dark') + ' theme');
 		}
 

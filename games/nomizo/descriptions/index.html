@@ -289,6 +289,44 @@ a { color: var(--accent); }
 }
 </style>
 <style>
+/* Site-only, all widths: the rest of grylpa.com's colors (2026-11-10). The page follows the
+ * theme the visitor chose on the site (SITE_THEME in build_games_doc.py sets data-theme from it),
+ * and its accents are the app's gold in dark and a navy in light, as on the other pages. */
+:root, :root[data-theme="light"] {
+	--ground: #f8f8f8;
+	--accent: #2a4c86;
+	--accent-soft: #e8edf6;
+	--gold: #8a6410;
+}
+.sitenav { display: flex; align-items: center; justify-content: space-between; max-width: none; }
+#theme-toggle {
+	width: 2rem;
+	height: 2rem;
+	padding: 0;
+	border: 1px solid var(--slate);
+	border-radius: 50%;
+	background: transparent;
+	color: var(--ink);
+	cursor: pointer;
+	font-size: 1rem;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-family: system-ui, sans-serif;
+}
+#theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+:root[data-theme="dark"] {
+	--accent: #f9ca5a;
+	--accent-soft: #2c2617;
+	--gold: #f9ca5a;
+	/* the site's neutral grays, not the document's blue-tinted ones */
+	--ground: #161616;
+	--surface: #1f1f1f;
+	--surface-2: #262626;
+	--rule: #343434;
+	--rule-soft: #2a2a2a;
+}
+
 /* Site-only, and narrow-screen-only.
  *
  * On a phone the four-column table is unreadable: 34 rows of dense prose in a box that scrolls
@@ -365,6 +403,35 @@ a { color: var(--accent); }
 	.sitenav { margin-top: 14px; }
 }
 </style>
+<script>
+var grylpaTheme = null;
+try { grylpaTheme = localStorage.getItem("grylpa-theme"); } catch (e) {}
+document.documentElement.setAttribute("data-theme", grylpaTheme === "light" ? "light" : "dark");
+document.addEventListener("DOMContentLoaded", function () {
+	// the same sun / moon switch as the rest of the site, at the end of the "back" line
+	// drawn, as in the site's theme.js (the font's moon is a thin sliver)
+	var SUN = '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>';
+	var MOON = '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg>';
+	var nav = document.querySelector(".sitenav");
+	if (!nav) return;
+	var btn = document.createElement("button");
+	btn.id = "theme-toggle";
+	btn.type = "button";
+	function relabel() {
+		var cur = document.documentElement.getAttribute("data-theme");
+		btn.innerHTML = cur === "dark" ? SUN : MOON;
+		btn.setAttribute("aria-label", "switch to " + (cur === "dark" ? "light" : "dark") + " theme");
+	}
+	relabel();
+	btn.addEventListener("click", function () {
+		var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+		document.documentElement.setAttribute("data-theme", next);
+		try { localStorage.setItem("grylpa-theme", next); } catch (e) {}
+		relabel();
+	});
+	nav.appendChild(btn);
+});
+</script>
 <script data-goatcounter="https://grylpa.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 </head>

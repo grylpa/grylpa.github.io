@@ -16,10 +16,6 @@
 			color: #222;
 		}
 
-		/* Extra right padding on mobile to clear the thumbnail strip */
-		@media (max-width: 1239px) {
-			body { padding-right: calc(56px + 12px); }
-		}
 
 		.back {
 			font-size: 0.95rem;
@@ -71,6 +67,27 @@
 			border-top: 1px solid #ddd;
 			font-size: 0.95rem;
 		}
+
+		/* Categories as shelves of game tiles */
+		.cats { list-style: none; padding: 0; margin: 1.2em 0 0; counter-reset: cat; }
+		.cats > li { margin: 0 0 2.2em; counter-increment: cat; }
+		.cats .cat-head { margin: 0; color: var(--muted); }
+		.cats .cat-head strong { color: var(--fg); font-size: 1.12rem; }
+		.cats .cat-head strong::before { content: counter(cat) ". "; color: var(--faint); font-weight: 400; }
+		.shelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+			gap: 16px 14px; margin: 0.9em 0 0; padding: 0; list-style: none; }
+		.shelf li { margin: 0; }
+		.shelf a { display: block; text-align: center; color: var(--muted); font-size: 0.85rem;
+			line-height: 1.25; text-decoration: none; }
+		.shelf img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 14px;
+			margin-bottom: 0.45em; box-shadow: 0 1px 2px rgba(0,0,0,.14), 0 6px 16px rgba(0,0,0,.10);
+			transition: transform .18s ease, box-shadow .18s ease; }
+		.shelf a:hover { text-decoration: none; color: var(--fg); }
+		.shelf a:hover img { transform: translateY(-3px);
+			box-shadow: 0 2px 4px rgba(0,0,0,.16), 0 12px 24px rgba(0,0,0,.16); }
+		@media (max-width: 520px) { .shelf { grid-template-columns: repeat(auto-fill, minmax(74px, 1fr)); gap: 14px 10px; }
+			.shelf a { font-size: 0.78rem; } .shelf img { border-radius: 12px; } }
+		@media (prefers-reduced-motion: reduce) { .shelf img { transition: none; } .shelf a:hover img { transform: none; } }
 	</style>
 
 	<link rel="stylesheet" href="/theme.css">
@@ -109,35 +126,84 @@
 
 		<p>The games fall into several loose categories:</p>
 
-		<ol>
+		<ol class="cats">
 			<li>
-				<strong>Brain twisters</strong> — games that force quick, confusing decisions and
-				break comfortable habits.
+				<p class="cat-head"><strong>Brain twisters</strong> — games that force quick, confusing decisions and break comfortable habits.</p>
+				<ul class="shelf">
+					<li><a href="/games/nomizo/descriptions/#aliens"><img src="/thumbnails/aliens.png" alt="" loading="lazy">Aliens</a></li>
+					<li><a href="/games/nomizo/descriptions/#sortingrobots"><img src="/thumbnails/sortingrobots.png" alt="" loading="lazy">Sorting Robots</a></li>
+					<li><a href="/games/nomizo/descriptions/#bucketmadness"><img src="/thumbnails/bucketmadness.png" alt="" loading="lazy">Pockets</a></li>
+					<li><a href="/games/nomizo/descriptions/#monkeyc"><img src="/thumbnails/monkeyc.png" alt="" loading="lazy">Apprentice</a></li>
+					<li><a href="/games/nomizo/descriptions/#change"><img src="/thumbnails/change.png" alt="" loading="lazy">Change</a></li>
+				</ul>
 			</li>
 			<li>
-				<strong>Attention and speed</strong> — games that require reacting while splitting
-				attention.
+				<p class="cat-head"><strong>Attention and speed</strong> — games that require reacting while splitting attention.</p>
+				<ul class="shelf">
+					<li><a href="/games/nomizo/descriptions/#gorilla"><img src="/thumbnails/gorilla.png" alt="" loading="lazy">Gorilla</a></li>
+					<li><a href="/games/nomizo/descriptions/#pickpocket"><img src="/thumbnails/pickpocket.png" alt="" loading="lazy">Pickpocket</a></li>
+					<li><a href="/games/nomizo/descriptions/#wolves"><img src="/thumbnails/wolves.png" alt="" loading="lazy">Wolves</a></li>
+					<li><a href="/games/nomizo/descriptions/#didi"><img src="/thumbnails/didi.png" alt="" loading="lazy">Pinpoint</a></li>
+					<li><a href="/games/nomizo/descriptions/#ddooo"><img src="/thumbnails/ddooo.png" alt="" loading="lazy">Witness</a></li>
+					<li><a href="/games/nomizo/descriptions/#pop"><img src="/thumbnails/pop.png" alt="" loading="lazy">Glimpse</a></li>
+					<li><a href="/games/nomizo/descriptions/#ooo"><img src="/thumbnails/ooo.png" alt="" loading="lazy">Lineup</a></li>
+				</ul>
 			</li>
 			<li>
-				<strong>Memory and speed</strong> — games that combine short-term memory
-				with fast decisions.
+				<p class="cat-head"><strong>Memory and speed</strong> — games that combine short-term memory with fast decisions.</p>
+				<ul class="shelf">
+					<li><a href="/games/nomizo/descriptions/#dino"><img src="/thumbnails/dino.png" alt="" loading="lazy">Dino</a></li>
+					<li><a href="/games/nomizo/descriptions/#dinoback"><img src="/thumbnails/dinoback.png" alt="" loading="lazy">Dino N-Back</a></li>
+					<li><a href="/games/nomizo/descriptions/#movingcards"><img src="/thumbnails/movingcards.png" alt="" loading="lazy">Moving Cards</a></li>
+					<li><a href="/games/nomizo/descriptions/#mosaic"><img src="/thumbnails/mosaic.png" alt="" loading="lazy">Mosaic</a></li>
+					<li><a href="/games/nomizo/descriptions/#lighthouse"><img src="/thumbnails/lighthouse.png" alt="" loading="lazy">Lighthouse</a></li>
+				</ul>
 			</li>
 			<li>
-				<strong>Planning</strong> — games that require planning and solving under time pressure.
+				<p class="cat-head"><strong>Planning</strong> — games that require planning and solving under time pressure.</p>
+				<ul class="shelf">
+					<li><a href="/games/nomizo/descriptions/#taxi"><img src="/thumbnails/taxi.png" alt="" loading="lazy">Taxi</a></li>
+					<li><a href="/games/nomizo/descriptions/#storm"><img src="/thumbnails/storm.png" alt="" loading="lazy">Storm</a></li>
+					<li><a href="/games/nomizo/descriptions/#guidem"><img src="/thumbnails/guidem.png" alt="" loading="lazy">Valet</a></li>
+					<li><a href="/games/nomizo/descriptions/#pneumo"><img src="/thumbnails/pneumo.png" alt="" loading="lazy">Pneumo</a></li>
+					<li><a href="/games/nomizo/descriptions/#parkem"><img src="/thumbnails/parkem.png" alt="" loading="lazy">Detour</a></li>
+					<li><a href="/games/nomizo/descriptions/#ants"><img src="/thumbnails/ants.png" alt="" loading="lazy">Ants</a></li>
+				</ul>
 			</li>
 			<li>
-				<strong>Reflexes</strong> — games focused on fast and accurate responses.
+				<p class="cat-head"><strong>Reflexes</strong> — games focused on fast and accurate responses.</p>
+				<ul class="shelf">
+					<li><a href="/games/nomizo/descriptions/#whack"><img src="/thumbnails/whack.png" alt="" loading="lazy">Whack</a></li>
+					<li><a href="/games/nomizo/descriptions/#ptbits"><img src="/thumbnails/ptbits.png" alt="" loading="lazy">Nudge</a></li>
+					<li><a href="/games/nomizo/descriptions/#typit"><img src="/thumbnails/typit.png" alt="" loading="lazy">Typit</a></li>
+				</ul>
 			</li>
 			<li>
-				<strong>Recognition</strong> — games about recognizing faces, pictures and the
-				shapes hidden in a pattern.
+				<p class="cat-head"><strong>Recognition</strong> — games about recognizing faces, pictures and the shapes hidden in a pattern.</p>
+				<ul class="shelf">
+					<li><a href="/games/nomizo/descriptions/#couples"><img src="/thumbnails/couples.png" alt="" loading="lazy">Couples</a></li>
+					<li><a href="/games/nomizo/descriptions/#friends"><img src="/thumbnails/friends.png" alt="" loading="lazy">Friends</a></li>
+					<li><a href="/games/nomizo/descriptions/#weris"><img src="/thumbnails/weris.png" alt="" loading="lazy">Weris</a></li>
+					<li><a href="/games/nomizo/descriptions/#polkadots"><img src="/thumbnails/polkadots.png" alt="" loading="lazy">Polka Dots</a></li>
+				</ul>
 			</li>
 			<li>
-				<strong>Memory and navigation</strong> — games that challenge short-term-memory 
-				while moving through mazes or paths.
+				<p class="cat-head"><strong>Memory and navigation</strong> — games that challenge short-term-memory while moving through mazes or paths.</p>
+				<ul class="shelf">
+					<li><a href="/games/nomizo/descriptions/#mmm"><img src="/thumbnails/mmm.png" alt="" loading="lazy">Mind Palace</a></li>
+					<li><a href="/games/nomizo/descriptions/#lightsout"><img src="/thumbnails/lightsout.png" alt="" loading="lazy">Lights Out</a></li>
+					<li><a href="/games/nomizo/descriptions/#deliverem"><img src="/thumbnails/deliverem.png" alt="" loading="lazy">Dispatch</a></li>
+					<li><a href="/games/nomizo/descriptions/#delemfp"><img src="/thumbnails/delemfp.png" alt="" loading="lazy">Headlights</a></li>
+				</ul>
 			</li>
 			<li>
-				<strong>Serenity</strong> — slower games, mostly breathing and calmness exercises.
+				<p class="cat-head"><strong>Serenity</strong> — slower games, mostly breathing and calmness exercises.</p>
+				<ul class="shelf">
+					<li><a href="/games/nomizo/descriptions/#breathe"><img src="/thumbnails/breathe.png" alt="" loading="lazy">Breathe</a></li>
+					<li><a href="/games/nomizo/descriptions/#udbr"><img src="/thumbnails/udbr.png" alt="" loading="lazy">Buoy</a></li>
+					<li><a href="/games/nomizo/descriptions/#crack"><img src="/thumbnails/crack.png" alt="" loading="lazy">Crack the Safe</a></li>
+					<li><a href="/games/nomizo/descriptions/#mother"><img src="/thumbnails/mother.png" alt="" loading="lazy">Mother Snake</a></li>
+				</ul>
 			</li>
 		</ol>
 	
@@ -172,63 +238,6 @@
 		</p>
 	</footer>
 
-	<aside class="thumb-col thumb-left" aria-hidden="true">
-		<img src="/thumbnails/bucketmadness.png" alt="">
-		<img src="/thumbnails/crack.png" alt="">
-		<img src="/thumbnails/deliverem.png" alt="">
-		<img src="/thumbnails/didi.png" alt="">
-		<img src="/thumbnails/friends.png" alt="">
-		<img src="/thumbnails/gorilla.png" alt="">
-		<img src="/thumbnails/guidem.png" alt="">
-		<img src="/thumbnails/lightsout.png" alt="">
-		<img src="/thumbnails/mmm.png" alt="">
-		<img src="/thumbnails/aliens.png" alt="">
-		<img src="/thumbnails/change.png" alt="">
-		<img src="/thumbnails/ptbits.png" alt="">
-		<img src="/thumbnails/dino.png" alt="">
-	</aside>
 
-	<aside class="thumb-col thumb-right" aria-hidden="true">
-		<div class="thumb-scroll">
-			<img src="/thumbnails/movingcards.png" alt="">
-			<img src="/thumbnails/ooo.png" alt="">
-			<img src="/thumbnails/parkem.png" alt="">
-			<img src="/thumbnails/pneumo.png" alt="">
-			<img src="/thumbnails/polkadots.png" alt="">
-			<img src="/thumbnails/pop.png" alt="">
-			<img src="/thumbnails/storm.png" alt="">
-			<img src="/thumbnails/taxi.png" alt="">
-			<img src="/thumbnails/typit.png" alt="">
-			<img src="/thumbnails/udbr.png" alt="">
-			<img src="/thumbnails/whack.png" alt="">
-			<img src="/thumbnails/wolves.png" alt="">
-			<img src="/thumbnails/delemfp.png" alt="">
-			<img src="/thumbnails/couples.png" alt="">
-			<img src="/thumbnails/dinoback.png" alt="">
-			<img src="/thumbnails/monkeyc.png" alt="">
-			<img src="/thumbnails/sortingrobots.png" alt="">
-			<img src="/thumbnails/pickpocket.png" alt="">
-			<img src="/thumbnails/ants.png" alt="">
-			<img src="/thumbnails/breathe.png" alt="">
-			<img src="/thumbnails/ddooo.png" alt="">
-			<img src="/thumbnails/lighthouse.png" alt="">
-			<img src="/thumbnails/mosaic.png" alt="">
-			<img src="/thumbnails/mother.png" alt="">
-			<img src="/thumbnails/weris.png" alt="">
-			<img src="/thumbnails/bucketmadness.png" alt="">
-			<img src="/thumbnails/crack.png" alt="">
-			<img src="/thumbnails/deliverem.png" alt="">
-			<img src="/thumbnails/didi.png" alt="">
-			<img src="/thumbnails/friends.png" alt="">
-			<img src="/thumbnails/gorilla.png" alt="">
-			<img src="/thumbnails/guidem.png" alt="">
-			<img src="/thumbnails/lightsout.png" alt="">
-			<img src="/thumbnails/mmm.png" alt="">
-			<img src="/thumbnails/aliens.png" alt="">
-			<img src="/thumbnails/change.png" alt="">
-			<img src="/thumbnails/ptbits.png" alt="">
-			<img src="/thumbnails/dino.png" alt="">
-		</div>
-	</aside>
 </body>
 </html>

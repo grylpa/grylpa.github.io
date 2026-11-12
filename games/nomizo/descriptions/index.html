@@ -73,7 +73,9 @@ body {
 }
 
 .page {
-	max-width: 1060px;
+	/* wide: the four-column table needs the room (at 1060 its "What you do" column was ~320px, 4-5
+	   words a line). The prose keeps its own reading width (p, ul, .lede, .callout: 62-70ch). */
+	max-width: 1480px;
 	margin: 0 auto;
 	padding: 0 26px 90px;
 }

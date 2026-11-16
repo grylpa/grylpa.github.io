@@ -453,15 +453,15 @@ document.addEventListener("DOMContentLoaded", function () {
 	<tbody>
 		<tr id="aliens">
 			<td class="nm c1"><span class="gname">Aliens</span><img class="thumb" src="thumbs/aliens.jpg" width="64" height="64" alt=""></td>
-			<td class="c2" data-label="What you do">You are the gate agent at an alien spaceport. Each gate shows its boarding pass, a rule about alien traits such as "3 EYES", "NOT BLUE" or "1 EYE AND NOT BLUE". Aliens wander into a gate's queue by themselves; you drag each one onto the boarding ramp if it matches that gate's pass, or back out into the hall if it does not. Let a queue fill and new arrivals are turned away, each costing a miss. After a while the passes hide behind a "?", so you work from memory. From level 4 the passes swap between gates, some gates board everything <em>except</em> their pass, and one waiting alien at a time is called and must be dealt with before its countdown runs out.</td>
+			<td class="c2" data-label="What you do">You are the gate agent at an alien spaceport. Each gate shows its boarding pass, a rule about alien traits such as "3 EYES", "NOT BLUE" or "1 EYE AND NOT BLUE". Aliens wander into a gate's queue by themselves; you drag each one onto the boarding ramp if it matches that gate's pass, or back out into the hall if it does not. There are always at least two gates, and each gets its share of arrivals. An alien left waiting too long walks off, and a full queue turns new arrivals away; each costs a miss, and a level is passed only if every gate is handled well. After a while the passes come down, so you work from memory. From level 4 the passes swap between gates, some gates board everything <em>except</em> their pass, and one waiting alien at a time is called and must be dealt with before its countdown runs out.</td>
 			<td class="c3" data-label="Skills involved">Holding several rules at once and keeping straight which belongs to which gate (including opposite ones, since some gates accept and others refuse), while being pulled from gate to gate rather than working in your own order.</td>
 			<td class="c4" data-label="What it measures"><ul class="meas"><li>Correct and incorrect boardings</li><li>Which mistake it was: boarding an alien the gate did not want, against turning away one it did</li><li>Answer speed, how even it is, and how many answers ran far slower than your own usual</li></ul></td>
 		</tr>
 		<tr id="sortingrobots">
 			<td class="nm c1"><span class="gname">Sorting Robots</span><img class="thumb" src="thumbs/sortingrobots.jpg" width="64" height="64" alt=""></td>
-			<td class="c2" data-label="What you do">Two conveyor belts carry parcels down the screen, each belt with its own rule on a sign at its head. Every parcel carries two labels side by side. When the lights beside one parcel come on, you judge it against the rule of its belt: swipe right to pick it up, left to leave it. After a few rounds the rule labels fade away and you have to keep both rules in your head. Which rules appear, and which belt each lands on, is drawn fresh each time you play.</td>
-			<td class="c3" data-label="Skills involved">Holding two rules at once once the labels are gone, and applying the right one to the right belt.</td>
-			<td class="c4" data-label="What it measures"><ul class="meas"><li>Right and wrong judgments, and which mistake each was</li><li>Accuracy for each kind of rule</li><li>Accuracy while the rule was on screen, against after it faded</li><li>Judgments left unanswered</li><li>Answer speed, how even it is, and the answers that ran far slower than your usual</li></ul></td>
+			<td class="c2" data-label="What you do">Quality control at a parcel depot. Two conveyor belts carry parcels down the screen, each belt with its own rule on a sign at its head, and every parcel carries two labels side by side. Each belt runs through a scanner in its middle, and as a parcel passes through you judge it by that belt's rule: tap the scanner to have the robot grab it if it matches, or let it ride if it doesn't. Parcels keep coming on both belts, often nearly together, and the belts speed up as you get better. Part way into each level the rule labels fade away and you have to keep both rules in your head, and on later levels the belts swap rules now and then. Which rules appear is drawn fresh each time you play.</td>
+			<td class="c3" data-label="Skills involved">Switching quickly between two rules depending on which belt a parcel is on, holding back when a parcel doesn't match, and keeping both rules in mind once the labels are gone.</td>
+			<td class="c4" data-label="What it measures"><ul class="meas"><li>Right and wrong judgments, and which mistake each was</li><li>Accuracy for each kind of rule</li><li>Accuracy while the rule was on screen, against after it faded</li><li>Answer speed, how even it is, and the answers that ran far slower than your usual</li><li>How much slower you are just after switching from one belt to the other</li></ul></td>
 		</tr>
 		<tr id="bucketmadness">
 			<td class="nm c1"><span class="gname">Pockets</span><img class="thumb" src="thumbs/bucketmadness.jpg" width="64" height="64" alt=""></td>
@@ -469,17 +469,17 @@ document.addEventListener("DOMContentLoaded", function () {
 			<td class="c3" data-label="Skills involved">Applying a rule fast enough under time pressure, and from memory once the labels are gone.</td>
 			<td class="c4" data-label="What it measures"><ul class="meas"><li>Which mistake it was: a match sent to the middle, a non-match pocketed, or one pocket taken for the other</li><li>Whether the mistakes lean to one side</li><li>Accuracy for each kind of rule</li><li>Accuracy while the rules were on screen, against after they were hidden</li><li>Answer speed, how even it is, and the answers that ran far slower than your usual</li></ul></td>
 		</tr>
-		<tr id="monkeyc">
-			<td class="nm c1"><span class="gname">Apprentice</span><img class="thumb" src="thumbs/monkeyc.jpg" width="64" height="64" alt=""></td>
-			<td class="c2" data-label="What you do">Watch a robot sort parcels on one or two conveyor belts without being told what it is looking for. Once it has shown enough examples, a multiple-choice question asks you to name the rule it was following, one question per belt.</td>
-			<td class="c3" data-label="Skills involved">Working a rule out purely from watching someone else, with no feedback from your own attempts.</td>
-			<td class="c4" data-label="What it measures"><ul class="meas"><li>Which kinds of rule you work out, and which you keep missing</li><li>Whether your answer was right</li><li>How long you take once the options are on screen</li></ul></td>
-		</tr>
 		<tr id="change">
 			<td class="nm c1"><span class="gname">Change</span><img class="thumb" src="thumbs/change.jpg" width="64" height="64" alt=""></td>
 			<td class="c2" data-label="What you do">A target amount and a pile of overlapping coins, from a penny up to a dollar. Drag coins into the tray and press Pay. There is no running total, so you add it up yourself. Every board can be paid exactly.</td>
 			<td class="c3" data-label="Skills involved">Adding up in your head under time pressure, and whether you settle on a plan or keep revising it.</td>
 			<td class="c4" data-label="What it measures"><ul class="meas"><li>The share of boards you paid exactly</li><li>Time per board</li></ul></td>
+		</tr>
+		<tr id="tipscales">
+			<td class="nm c1"><span class="gname">Tip the Scales</span><img class="thumb" src="thumbs/tipscales.jpg" width="64" height="64" alt=""></td>
+			<td class="c2" data-label="What you do">A weigh-house full of crates in colored sets, and no scale that reads numbers. The crates of one color weigh 1, 2, 3 kg and up, each weight once, and a pile of balance scales says how some of them compare: this one balances that one, these two together are lighter than that one, this one lies between two others. Tap a crate and rub weights off its slate until one is left. Every puzzle can be solved by reasoning alone, and a hint shows one step and why. A level is three short puzzles, larger and with weaker clues as you go.</td>
+			<td class="c3" data-label="Skills involved">Step-by-step logical deduction, holding several facts in mind at once, and checking a conclusion before acting on it.</td>
+			<td class="c4" data-label="What it measures"><ul class="meas"><li>Time per puzzle</li><li>Mistakes (weights ruled out that were still possible)</li><li>Hints used</li></ul></td>
 		</tr>
 	</tbody>
 </table></div>
@@ -509,27 +509,9 @@ document.addEventListener("DOMContentLoaded", function () {
 		</tr>
 		<tr id="didi">
 			<td class="nm c1"><span class="gname">Pinpoint</span><img class="thumb" src="thumbs/didi.jpg" width="64" height="64" alt=""></td>
-			<td class="c2" data-label="What you do">A shape flashes in the center of the screen and, a moment later, a dot flashes off to one side. Both vanish. Eight clusters of shapes then appear, one in each direction, and you tap the shape you saw in the direction the dot was.</td>
-			<td class="c3" data-label="Skills involved">Catching two things that arrive almost together, one in front of you and one to the side. Several other directions hold the right shape too, so remembering only the shape puts you in the wrong place, and remembering only the place leaves you guessing between shapes.</td>
+			<td class="c2" data-label="What you do">You are on a stakeout, watching a square at night in the rain from a rooftop. Lightning lights the square for a moment: a courier with an umbrella stands by the fountain, and at the same instant a lookout in a yellow raincoat, under a see-through umbrella, is seen at one of the eight streets around it. Then it is dark, the street lamps come on, and people with umbrellas queue in every street. You tap the courier's umbrella in the street where the lookout was. The flash gets shorter as you get better and longer when you miss, and later levels add more umbrellas, two-colored ones, and passers-by glimpsed in the same flash.</td>
+			<td class="c3" data-label="Skills involved">Taking in two things at once in a glimpse, one in front of you and one to the side. Other spots hold the courier's umbrella too, so remembering only the umbrella puts you at the wrong spot, and remembering only the spot leaves you guessing between umbrellas.</td>
 			<td class="c4" data-label="What it measures"><ul class="meas"><li>Right and wrong answers</li><li>Which directions you get wrong most, and whether any of them stands out further than chance explains</li><li>Whether it was the shape or the place you lost</li><li>Answer speed, how even it is, and the answers that ran far slower than your usual</li></ul></td>
-		</tr>
-		<tr id="ddooo">
-			<td class="nm c1"><span class="gname">Witness</span><img class="thumb" src="thumbs/ddooo.jpg" width="64" height="64" alt=""></td>
-			<td class="c2" data-label="What you do">The same brief flash of a shape in the center and a dot to one side, but here you must get both: name the shape and say which way the dot was. Both have to be right for the round to count.</td>
-			<td class="c3" data-label="Skills involved">Holding two separate details of a single moment, either of which is easy to lose alone.</td>
-			<td class="c4" data-label="What it measures"><ul class="meas"><li>Rounds with both the shape and the direction right</li><li>Which directions you get wrong most, and whether any of them stands out further than chance explains</li><li>Answer speed, how even it is, and the answers that ran far slower than your usual</li></ul></td>
-		</tr>
-		<tr id="pop">
-			<td class="nm c1"><span class="gname">Glimpse</span><img class="thumb" src="thumbs/pop.jpg" width="64" height="64" alt=""></td>
-			<td class="c2" data-label="What you do">A shape appears for a moment at one spot around the edge of the screen. After a pause, several shapes appear at other edge positions and you pick the one you saw.</td>
-			<td class="c3" data-label="Skills involved">What registers at the edge of your vision, where you are not looking directly.</td>
-			<td class="c4" data-label="What it measures"><ul class="meas"><li>Right and wrong answers</li><li>Which edges you miss most, and whether any of them stands out further than chance explains</li><li>Answer speed, how even it is, and the answers that ran far slower than your usual</li></ul></td>
-		</tr>
-		<tr id="ooo">
-			<td class="nm c1"><span class="gname">Lineup</span><img class="thumb" src="thumbs/ooo.jpg" width="64" height="64" alt=""></td>
-			<td class="c2" data-label="What you do">You see one image briefly, then after a short delay pick it out of a set of similar ones as fast as you can.</td>
-			<td class="c3" data-label="Skills involved">Recognizing something again with convincing wrong answers sitting beside it.</td>
-			<td class="c4" data-label="What it measures"><ul class="meas"><li>Right and wrong picks</li><li>Answer speed, how even it is, and the answers that ran far slower than your usual</li></ul></td>
 		</tr>
 	</tbody>
 </table></div>
@@ -681,9 +663,9 @@ document.addEventListener("DOMContentLoaded", function () {
 	<tbody>
 		<tr id="mmm">
 			<td class="nm c1"><span class="gname">Mind Palace</span><img class="thumb" src="thumbs/mmm.jpg" width="64" height="64" alt=""></td>
-			<td class="c2" data-label="What you do">Wander a castle of rooms joined by corridors, taking one coin from each room. Once every room has been visited and every coin taken, the view pulls back to the whole floor plan and you are asked, room by room, what color that room's floor was.</td>
-			<td class="c3" data-label="Skills involved">Building a map in your head while your attention is on collecting coins.</td>
-			<td class="c4" data-label="What it measures"><ul class="meas"><li>Time to explore the whole floor</li></ul></td>
+			<td class="c2" data-label="What you do">Explore a castle and find what is hidden in it, then find it again on the map. Walking through the castle you only ever see the room you are in. Every room, a kitchen, a library, a garden, has a vault with an object inside, a crown, an anchor, a teacup: walk into a vault to open it and see what it holds. When every vault is opened, the castle is shown from above as a plain map, every room the same gray, and for each object you tap the room it was in before its time bar runs out. The bar adapts to you: quick answers shorten it, running out lengthens it. A wrong room or a question run out costs a point. Bombs and monsters in the rooms end the round if they touch you.</td>
+			<td class="c3" data-label="Skills involved">Building a map of a place in your head while walking through it, and remembering what was where.</td>
+			<td class="c4" data-label="What it measures"><ul class="meas"><li>Wrong rooms on the map</li><li>Time to find each room on the map</li><li>Questions that ran out of time</li></ul></td>
 		</tr>
 		<tr id="lightsout">
 			<td class="nm c1"><span class="gname">Lights Out</span><img class="thumb" src="thumbs/lightsout.jpg" width="64" height="64" alt=""></td>
@@ -702,38 +684,6 @@ document.addEventListener("DOMContentLoaded", function () {
 			<td class="c2" data-label="What you do">The same delivery job, but you steer the truck yourself. The whole board is shown for five seconds first, and that is your only look at it. Then the camera zooms in and follows the truck, so from there the route comes from memory. Docks still have to be reached in order. Like Dispatch, it can be played by day, at night or in the rain.</td>
 			<td class="c3" data-label="Skills involved">Finding your way from memory with no overview left to check against.</td>
 			<td class="c4" data-label="What it measures"><ul class="meas"><li>Time per delivery round</li></ul></td>
-		</tr>
-	</tbody>
-</table></div>
-</div>
-<div class="catblock">
-<p class="cat"><span>Game category</span>Serenity</p>
-<div class="scroll"><table>
-	<thead><tr><th class="c1">Game</th><th class="c2">What you do</th><th class="c3">Skills involved</th><th class="c4">What it measures</th></tr></thead>
-	<tbody>
-		<tr id="breathe">
-			<td class="nm c1"><span class="gname">Breathe</span><img class="thumb" src="thumbs/breathe.jpg" width="64" height="64" alt=""></td>
-			<td class="c2" data-label="What you do">Set a session length, then tap the screen once per breath at the same point in each cycle, such as the end of each out-breath. A large circle breathes along with the rhythm it picks up from you.</td>
-			<td class="c3" data-label="Skills involved">How even your breathing is, rather than how fast.</td>
-			<td class="c4" data-label="What it measures"><ul class="meas"><li>How long you practiced</li><li>The typical gap between breaths, and breaths per minute</li><li>Breaths that fell out of rhythm</li></ul></td>
-		</tr>
-		<tr id="udbr">
-			<td class="nm c1"><span class="gname">Buoy</span><img class="thumb" src="thumbs/udbr.jpg" width="64" height="64" alt=""></td>
-			<td class="c2" data-label="What you do">Swipe your finger up as you breathe in and down as you breathe out, floating up and down with your own rhythm.</td>
-			<td class="c3" data-label="Skills involved">Holding a rhythm with a movement rather than a tap.</td>
-			<td class="c4" data-label="What it measures"><ul class="meas"><li>How long you practiced, and at which length and pattern</li><li>The typical length of a cycle, and cycles per minute</li><li>Cycles completed, and cycles that fell out of rhythm</li></ul></td>
-		</tr>
-		<tr id="crack">
-			<td class="nm c1"><span class="gname">Crack the Safe</span><img class="thumb" src="thumbs/crack.jpg" width="64" height="64" alt=""></td>
-			<td class="c2" data-label="What you do">Open a combination safe with your breathing: swipe up, hold, swipe down, hold, with each part timed to a guided pattern. Every full cycle done in time turns the lock a little further.</td>
-			<td class="c3" data-label="Skills involved">Matching your breathing to a set rhythm rather than your own.</td>
-			<td class="c4" data-label="What it measures"><ul class="meas"><li>How long you practiced, and at which length and pattern</li><li>Cycles completed, and how many of them opened the safe</li><li>How close each part of the cycle came to its target length</li></ul></td>
-		</tr>
-		<tr id="mother">
-			<td class="nm c1"><span class="gname">Mother Snake</span><img class="thumb" src="thumbs/mother.jpg" width="64" height="64" alt=""></td>
-			<td class="c2" data-label="What you do">Follow the mother snake as she traces a path set by a breathing pattern, rising as you breathe in, level as you hold, falling as you breathe out.</td>
-			<td class="c3" data-label="Skills involved">Smooth continuous following, which none of the tapping games can show.</td>
-			<td class="c4" data-label="What it measures"><ul class="meas"><li>How long you practiced, and at which length and pattern</li><li>How closely you stayed on the path</li><li>How quickly you followed each change of direction</li></ul></td>
 		</tr>
 	</tbody>
 </table></div>

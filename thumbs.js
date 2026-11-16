@@ -1,14 +1,14 @@
 // The thumbnail frame, alive (see thumbs.css). Runs BEFORE theme.js, whose endless strip clones the
 // tiles: the tiles are wrapped first, so the clones carry the wrappers.
 (function () {
+	// Only the games the app shows: hidden ones (MainCfg.HIDDEN_GAMES) are left out, or a tile
+	// would link to a description the page no longer has.
 	var NAMES = {
-		aliens: "Aliens", sortingrobots: "Sorting Robots", bucketmadness: "Pockets", monkeyc: "Apprentice",
-		change: "Change", gorilla: "Gorilla", pickpocket: "Pickpocket", wolves: "Wolves", didi: "Pinpoint",
-		ddooo: "Witness", pop: "Glimpse", ooo: "Lineup", dino: "Dino", dinoback: "Dino N-Back",
+		aliens: "Aliens", sortingrobots: "Sorting Robots", bucketmadness: "Pockets", change: "Change", tipscales: "Tip the Scales", gorilla: "Gorilla", pickpocket: "Pickpocket", wolves: "Wolves", didi: "Pinpoint",
+		dino: "Dino", dinoback: "Dino N-Back",
 		movingcards: "Moving Cards", mosaic: "Mosaic", lighthouse: "Lighthouse", taxi: "Taxi", storm: "Storm",
 		guidem: "Valet", pneumo: "Pneumo", parkem: "Detour", ants: "Ants", whack: "Whack", ptbits: "Nudge",
-		typit: "Typit", breathe: "Breathe", udbr: "Buoy", crack: "Crack the Safe", mother: "Mother Snake",
-		couples: "Couples", friends: "Friends", weris: "Weris", polkadots: "Polka Dots", mmm: "Mind Palace",
+		typit: "Typit", couples: "Couples", friends: "Friends", weris: "Weris", polkadots: "Polka Dots", mmm: "Mind Palace",
 		lightsout: "Lights Out", deliverem: "Dispatch", delemfp: "Headlights"
 	};
 	var GAMES = Object.keys(NAMES);

@@ -43,10 +43,17 @@
 		document.querySelectorAll(".shelf img, .phone img").forEach(pace);
 		// the nomizo page's tiles sit a little off their places, tilts and sizes, like the frame
 		document.querySelectorAll(".shelf img").forEach(function (img) {
-			img.style.setProperty("--dx", rnd(-6, 6).toFixed(1) + "%");
-			img.style.setProperty("--dy", rnd(-4, 4).toFixed(1) + "%");
+			var dx = rnd(-6, 6), dy = rnd(-4, 4), s = rnd(0.88, 1.04);
+			img.style.setProperty("--dx", dx.toFixed(1) + "%");
+			img.style.setProperty("--dy", dy.toFixed(1) + "%");
 			img.style.setProperty("--rz", rnd(-5, 5).toFixed(1) + "deg");
-			img.style.setProperty("--s", rnd(0.88, 1.04).toFixed(3));
+			img.style.setProperty("--s", s.toFixed(3));
+			// the same place and size, as fractions, on the link round it: its play mark (games/index.html) sits
+			// at the picture's top right corner as it stands when pointed at
+			var a = img.parentNode;
+			a.style.setProperty("--pdx", (dx / 100).toFixed(4));
+			a.style.setProperty("--pdy", (dy / 100).toFixed(4));
+			a.style.setProperty("--ps", s.toFixed(3));
 		});
 		var imgs = document.querySelectorAll(".thumb-col img");
 		if (!imgs.length) return;
